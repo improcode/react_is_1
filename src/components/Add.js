@@ -1,8 +1,10 @@
 import React from 'react'
+import Header from './Header'
 
-const Add = (props) => (
+const Add = ({numberA, numberB}) => (
     <div>
-        Suma {props.numberA} i {props.numberB} jest równa {props.numberA + props.numberB}
+        Suma {numberA} i {numberB} jest równa {numberA + numberB}
+        <Header text={numberA + numberB}/>
     </div>
 
 

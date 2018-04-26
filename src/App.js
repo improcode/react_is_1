@@ -1,5 +1,11 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom'
+import AppBar from 'material-ui/AppBar'
+
 
 import MyFirstComponent from './components/MyFirstComponent'
 import Add from './components/Add'
@@ -8,44 +14,81 @@ import MappingArray from './components/MappingArray'
 import MappingArray2 from './components/MappingArray2'
 import CounterWithState from './components/CounterWithState'
 import Dashboard from './components/Dashboard'
+import Hello from './components/Hello'
+import SideBar from './components/SideBar'
 
 
-const App = () => (
-    <div>
-        <Router>
+class App extends React.Component {
+    state = {
+        isDrawerOpen: false
+    }
 
-          <div>
-              <Link to={'/'}> HOME </Link>
-              <Link to={'/counter'}> Counter </Link>
-              <Link to={'/mapping-array'}> MappingArray </Link>
-              <Link to={'/mapping-array-2'}> MappingArray2 </Link>
-              <hr/>
-              <Route path={'/mapping-array'} component={MappingArray}/>
-              <Route path={'/mapping-array-2'} component={MappingArray2}/>
-              <Route path={'/counter'} component={CounterWithState}/>
-              <Route exact path={'/'} component={Dashboard}/>
-
-          </div>
-        </Router>
-        {/*<MappingArray/>*/}
-        {/*<hr/>*/}
-        {/*<MappingArray2/>*/}
-        {/*<hr/>*/}
-        {/*<CounterWithState/>*/}
-        {/*<hr/>*/}
+    drawerBtnClickHandler = () => this.setState({
+        isDrawerOpen: !this.state.isDrawerOpen
+    })
 
 
-        <Header text={'PAAANIE, daj pan spokój'}/>
-        <MyFirstComponent name="Artur"
-                          age="28"/>
-        <Add numberA={5}
-             numberB={10}
-             isRed={false}/>
-        <hr/>
+    render() {
+
+        return (
+
+            <div>
+                <AppBar
+                    title="Pierwsza appka"
+                    onLeftIconButtonClick={this.drawerBtnClickHandler}
+                />
+                <Router>
+                    <div>
+                        <SideBar
+                            onRequestSideBarChange={this.drawerBtnClickHandler}
+                            isSideBarOpen={this.state.isDrawerOpen}
+                        />
 
 
-    </div>
-)
+                        <Route path={'/mapping-array'}
+                               component={MappingArray}/>
+                        <Route path={'/mapping-array-2'}
+                               component={MappingArray2}/>
+                        <Route path={'/counter'}
+                               component={CounterWithState}/>
+                        <Route exact
+                               path={'/'}
+                               component={Dashboard}/>
+                        <Route exact
+                               path={'/first'}
+                               render={() => (
+                                   <MyFirstComponent name={'Artur'}/>)}/>
+                        <Route path={'/header'}
+                               component={Header}
+                               text={'PAAANIE, daj pan spokój'}/>
+                        <Route path={'/add'}
+                               component={Add}
+                               numberA={5}
+                               numberB={10}
+                               isRed={false}/>
+                        <Route path={'/hello/:name'}
+                               component={Hello}/>
+
+                    </div>
+                </Router>
+                {/*<MappingArray/>*/}
+                {/*<hr/>*/}
+                {/*<MappingArray2/>*/}
+                {/*<hr/>*/}
+                {/*<CounterWithState/>*/}
+                {/*<hr/>*/}
+
+
+                <Add numberA={5}
+                     numberB={10}
+                     isRed={false}/>
+                <hr/>
+
+
+            </div>
+        )
+    }
+}
 
 
 export default App;

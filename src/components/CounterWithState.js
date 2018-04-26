@@ -1,4 +1,13 @@
 import React from 'react'
+import RaisedButton from 'material-ui/RaisedButton'
+
+
+const styles = {
+    btn: {
+        margin: '10px'
+    }
+}
+
 
 class CounterWithState extends React.Component {
     state = {
@@ -19,8 +28,18 @@ class CounterWithState extends React.Component {
             <div>
                 <h1>{this.state.count}</h1>
                 <div>
-                    <button onClick={this.minusBtnClick}> - </button>
-                    <button onClick={this.plusBtnClick}> + </button>
+                    <RaisedButton
+                        onClick={this.minusBtnClick}
+                        label={'-'}
+                        primary={true}
+                        style={styles.btn}
+                    />
+                    <RaisedButton
+                        onClick={this.plusBtnClick}
+                        label={'+'}
+                        secondary={true}
+                        style={styles.btn}
+                    />
                 </div>
                 <hr/>
             </div>

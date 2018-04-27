@@ -3,10 +3,13 @@ import Task from './Task'
 
 import Container from '../UI/Container'
 
-const List = ({tasksList, deleteTaskFunction}) => (
+
+const List = ({tasksList, deleteTaskFunction, filter}) => (
     <Container>
         {
-            tasksList.map(task => (
+            tasksList
+                .filter(task => task.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
+                .map(task => (
                 <Task
                     name={task.name}
                     key={task.uid}

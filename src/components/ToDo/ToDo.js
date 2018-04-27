@@ -34,9 +34,12 @@ class ToDo extends React.Component {
     }
 
 
-
     newTaskChangeHandler = (event, newValue) => this.setState({
         newTask: newValue
+    })
+
+    newFilterChangeHandler = (event, newValue) => this.setState({
+        filterText: newValue
     })
 
     render() {
@@ -45,11 +48,14 @@ class ToDo extends React.Component {
                 <Controls
                     onClickHandler={this.addTask}
                     onChangeHandler={this.newTaskChangeHandler}
-                newTaskValue={this.state.newTask}
+                    newTaskValue={this.state.newTask}
+                    filterTaskValue={this.state.filterText}
+                    onFilterChangeHandler={this.newFilterChangeHandler}
                 />
                 <List
                     deleteTaskFunction={this.deleteTask}
                     tasksList={this.state.tasks}
+                    filter={this.state.filterText}
                 />
             </div>
 

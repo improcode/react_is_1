@@ -1,7 +1,32 @@
 import React from 'react'
+import Paper from 'material-ui/Paper'
+import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
 
-const Control = (props) => (
-    <div>Control</div>
+const styles = {
+    paper: {
+        margin: '10px',
+        padding: '10px'
+    }
+}
+
+
+const Control = ({onChangeHandler, newTaskValue, onClickHandler}) => (
+    <Paper style={styles.paper}>
+        <TextField
+            onChange={onChangeHandler}
+            value={newTaskValue}
+            name={'new-task'}
+            placeholder={'New Task'}
+            fullWidth={true}
+        />
+        <RaisedButton
+            onClick={onClickHandler}
+            primary={true}
+            fullWidth={true}
+            label={'ADD'}
+        />
+    </Paper>
 )
 
 export default Control

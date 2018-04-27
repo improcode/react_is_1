@@ -1,5 +1,6 @@
 import React from 'react'
 import List from './List'
+import Controls from './Controls'
 
 
 class ToDo extends React.Component {
@@ -8,7 +9,8 @@ class ToDo extends React.Component {
             {name: 'Umyj naczynia', uid: 1524821428763},
             {name: 'Wyprowadź psa', uid: 1524821428764}
         ],
-        filterText: ''
+        filterText: '',
+        newTask: ''
     }
 
     deleteTask = (taskUid) => {
@@ -18,14 +20,35 @@ class ToDo extends React.Component {
         })
     }
 
-    componentDidMount(){
-        this.deleteTask(1524821428763)
+    addTask = () => {
+        const newTask = {
+            name: this.state.newTask,
+            uid: Date.now()
+        }
+        const newTasks = this.state.tasks.concat(newTask)
+
+        this.setState({
+            tasks: newTasks,
+            newTask: ''
+        })
     }
+
+
+
+    newTaskChangeHandler = (event, newValue) => this.setState({
+        newTask: newValue
+    })
 
     render() {
         return (
             <div>
+                <Controls
+                    onClickHandler={this.addTask}
+                    onChangeHandler={this.newTaskChangeHandler}
+                newTaskValue={this.state.newTask}
+                />
                 <List
+                    deleteTaskFunction={this.deleteTask}
                     tasksList={this.state.tasks}
                 />
             </div>

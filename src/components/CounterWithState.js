@@ -10,18 +10,36 @@ const styles = {
 
 
 class CounterWithState extends React.Component {
-    state = {
-        count: 0
+    constructor() {
+        super()
 
+        this.state = {
+            count: 0
+
+        }
+
+        this.minusBtnClick = () => this.setState({count: this.state.count - 1})
+        this.plusBtnClick = () => this.setState({count: this.state.count + 1})
     }
 
-    minusBtnClick = () => this.setState({count: this.state.count - 1})
+    componentDidMount() {
+        console.log('Counter is mounted!')
+    }
 
-    plusBtnClick = () => this.setState({count: this.state.count + 1})
+    componentWillUnmount() {
+        console.log('unmount counter')
+    }
+
+    componentDidUpdate() {
+        console.log('did update')
+    }
+
+    componentWillUpdate() {
+        console.log('will update')
+    }
 
     render() {
         // const minusBtnClick = () => {this.setState({count: this.state.count - 1})}
-        //
         // const plusBtnClick = () => {this.setState({count: this.state.count + 1})}
 
         return (

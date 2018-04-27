@@ -2,7 +2,6 @@ import React from 'react'
 import {
     BrowserRouter as Router,
     Route,
-    Link
 } from 'react-router-dom'
 import AppBar from 'material-ui/AppBar'
 
@@ -16,6 +15,7 @@ import CounterWithState from './components/CounterWithState'
 import Dashboard from './components/Dashboard'
 import Hello from './components/Hello'
 import SideBar from './components/SideBar'
+import ToDo from './components/ToDo/ToDo'
 
 
 class App extends React.Component {
@@ -44,7 +44,8 @@ class App extends React.Component {
                             isSideBarOpen={this.state.isDrawerOpen}
                         />
 
-
+                        <Route path={'/todo'}
+                               component={ToDo}/>
                         <Route path={'/mapping-array'}
                                component={MappingArray}/>
                         <Route path={'/mapping-array-2'}
@@ -59,13 +60,11 @@ class App extends React.Component {
                                render={() => (
                                    <MyFirstComponent name={'Artur'}/>)}/>
                         <Route path={'/header'}
-                               component={Header}
-                               text={'PAAANIE, daj pan spokój'}/>
+                               render={()=> (<Header text={'PAAANIE, daj pan spokój'}/>)}/>
                         <Route path={'/add'}
-                               component={Add}
-                               numberA={5}
-                               numberB={10}
-                               isRed={false}/>
+                               render={()=> (
+                                   <Add numberA={5} numberB={10} isRed={false} />)}/>
+
                         <Route path={'/hello/:name'}
                                component={Hello}/>
 
@@ -79,10 +78,10 @@ class App extends React.Component {
                 {/*<hr/>*/}
 
 
-                <Add numberA={5}
-                     numberB={10}
-                     isRed={false}/>
-                <hr/>
+                {/*<Add numberA={5}*/}
+                     {/*numberB={10}*/}
+                     {/*isRed={false}/>*/}
+                {/*<hr/>*/}
 
 
             </div>

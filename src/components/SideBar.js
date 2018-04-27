@@ -19,6 +19,7 @@ open={props.isSideBarOpen}
 <Link to={'/first'}> <MenuItem>Hello</MenuItem> </Link>
 <Link to={'/add'}> <MenuItem>ADD</MenuItem> </Link>
 <Link to={'/hello/Artur'}> <MenuItem>HELLO</MenuItem> </Link>
+<Link to={'/todo'}> <MenuItem>ToDo</MenuItem> </Link>
 
 </Drawer>
 )

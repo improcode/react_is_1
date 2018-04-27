@@ -1,18 +1,12 @@
 import React from 'react'
-import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
-const styles = {
-    paper: {
-        margin: '10px',
-        padding: '10px'
-    }
-}
+import Container from '../UI/Container'
 
 
 const Control = ({onChangeHandler, newTaskValue, onClickHandler}) => (
-    <Paper style={styles.paper}>
+    <Container>
         <TextField
             onChange={onChangeHandler}
             value={newTaskValue}
@@ -26,7 +20,7 @@ const Control = ({onChangeHandler, newTaskValue, onClickHandler}) => (
             fullWidth={true}
             label={'ADD'}
         />
-    </Paper>
+    </Container>
 )
 
 export default Control

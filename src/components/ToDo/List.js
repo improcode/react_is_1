@@ -1,8 +1,10 @@
 import React from 'react'
 import Task from './Task'
 
+import Container from '../UI/Container'
+
 const List = ({tasksList, deleteTaskFunction}) => (
-    <div>
+    <Container>
         {
             tasksList.map(task => (
                 <Task
@@ -13,7 +15,7 @@ const List = ({tasksList, deleteTaskFunction}) => (
             ))
         }
 
-    </div>
+    </Container>
 )
 
 export default List
